@@ -2,9 +2,9 @@
 <html style="height: 100%" lang="zh">
 <head>
     <meta charset="utf-8">
-    <script type="text/javascript" src="jss/echarts.js"></script>
-    <script type="text/javascript" src="jss/jquery.js"></script>
-    <script type="text/javascript" src="jss/dataTool.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/OpenWaygate/OpenWaygate.github.io@master/source/js/echarts.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/OpenWaygate/OpenWaygate.github.io@master/source/js/jquery.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/OpenWaygate/OpenWaygate.github.io@master/source/js/dataTool.js"></script>
 </head>
 <body style="height: 100%; margin: 0">
 <div id="container" style="height: 100%"></div>
@@ -14,7 +14,7 @@
     var app = {};
     option = null;
     myChart.showLoading();
-    $.get('data/fi_d1g.gexf', function (xml) {
+    $.get('https://cdn.jsdelivr.net/gh/OpenWaygate/OpenWaygate.github.io@master/source/data/fi_d1g.gexf', function (xml) {
         myChart.hideLoading();
 
         var graph = echarts.dataTool.gexf.parse(xml);
