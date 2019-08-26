@@ -55,18 +55,18 @@
   };
 </script>
 
-  <meta name="description" content="这篇文档是我这一学期对&apos;偏微分方程数值解&apos;一书中大部分算法的整理, 学习过程中所写代码的汇总以及学习体会. PS 可惜我的同学看不到😆 第二章讲的是只含一个时间变量和一个空间变量的抛物型方程, 在这一章中引入了显式/隐式的概念, 最大值原理的成立条件, 通过截断误差和逼近误差分析算法收敛性和利用傅里叶分析对算法稳定性的探讨. 其中, Crank–Nicolson 方法因为合理利用了显隐">
+  <meta name="description" content="这篇文档是我这一学期对&apos;偏微分方程数值解&apos;一书中大部分算法的整理, 学习过程中所写代码的汇总以及学习体会. PS 可惜我的同学看不到😆">
 <meta name="keywords" content="math">
 <meta property="og:type" content="article">
 <meta property="og:title" content="微分方程数值解复习指北">
 <meta property="og:url" content="https://derivative.ai/2018/06/26/微分方程数值解复习指北/index.html">
 <meta property="og:site_name" content="Derivative">
-<meta property="og:description" content="这篇文档是我这一学期对&apos;偏微分方程数值解&apos;一书中大部分算法的整理, 学习过程中所写代码的汇总以及学习体会. PS 可惜我的同学看不到😆 第二章讲的是只含一个时间变量和一个空间变量的抛物型方程, 在这一章中引入了显式/隐式的概念, 最大值原理的成立条件, 通过截断误差和逼近误差分析算法收敛性和利用傅里叶分析对算法稳定性的探讨. 其中, Crank–Nicolson 方法因为合理利用了显隐">
+<meta property="og:description" content="这篇文档是我这一学期对&apos;偏微分方程数值解&apos;一书中大部分算法的整理, 学习过程中所写代码的汇总以及学习体会. PS 可惜我的同学看不到😆">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-08-14T11:11:49.078Z">
+<meta property="og:updated_time" content="2019-08-26T11:12:16.117Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="微分方程数值解复习指北">
-<meta name="twitter:description" content="这篇文档是我这一学期对&apos;偏微分方程数值解&apos;一书中大部分算法的整理, 学习过程中所写代码的汇总以及学习体会. PS 可惜我的同学看不到😆 第二章讲的是只含一个时间变量和一个空间变量的抛物型方程, 在这一章中引入了显式/隐式的概念, 最大值原理的成立条件, 通过截断误差和逼近误差分析算法收敛性和利用傅里叶分析对算法稳定性的探讨. 其中, Crank–Nicolson 方法因为合理利用了显隐">
+<meta name="twitter:description" content="这篇文档是我这一学期对&apos;偏微分方程数值解&apos;一书中大部分算法的整理, 学习过程中所写代码的汇总以及学习体会. PS 可惜我的同学看不到😆">
   <link rel="canonical" href="https://derivative.ai/2018/06/26/微分方程数值解复习指北/">
 
 
@@ -116,7 +116,9 @@
   </style>
 </noscript>
 
-  <script src="https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <script src="https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script>
+  <script type="text/javascript" src="/js/love.js"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="en">
@@ -255,11 +257,19 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2019-08-14 19:11:49" itemprop="dateModified" datetime="2019-08-14T19:11:49+08:00">2019-08-14</time>
+                <time title="Modified: 2019-08-26 19:12:16" itemprop="dateModified" datetime="2019-08-26T19:12:16+08:00">2019-08-26</time>
               </span>
             
           
 
+          
+            <span class="post-meta-item" title="Views">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
           
 
         </div>
@@ -273,8 +283,7 @@
       
         <div id="write" class="is-node show-fences-line-number">
 <p>
-</p><p>这篇文档是我这一学期对'偏微分方程数值解'一书中大部分算法的整理, 学习过程中所写代码的汇总以及学习体会. PS 可惜我的同学看不到😆</p>
-<p>第二章讲的是只含一个时间变量和一个空间变量的抛物型方程, 在这一章中引入了显式/隐式的概念, 最大值原理的成立条件, 通过截断误差和逼近误差分析算法收敛性和利用傅里叶分析对算法稳定性的探讨. 其中, Crank–Nicolson 方法因为合理利用了显隐格式的优点, 在精度和算法复杂度上具有优势.</p>
+</p><p>这篇文档是我这一学期对'偏微分方程数值解'一书中大部分算法的整理, 学习过程中所写代码的汇总以及学习体会. PS 可惜我的同学看不到😆 <a id="more"></a> 第二章讲的是只含一个时间变量和一个空间变量的抛物型方程, 在这一章中引入了显式/隐式的概念, 最大值原理的成立条件, 通过截断误差和逼近误差分析算法收敛性和利用傅里叶分析对算法稳定性的探讨. 其中, Crank–Nicolson 方法因为合理利用了显隐格式的优点, 在精度和算法复杂度上具有优势.</p>
 <p>第三章是第一章在二三维情况下的推广, 主要介绍了 ADI 方法和 LOD 方法, ADI 方法可以看作 Crank–Nicolson 方法在二维的推广, LOD 方法在 b(<span class="math inline">\(\nabla^2 u\)</span>的系数) 为常数时与 ADI 方法等价.</p>
 <p>第四章讲了一维双曲型方程, 特征线方法给出了初始条件随时间的曲线, CFL 条件给出了差分格式稳定性的一个必要条件, 这可以结合特征线和网格图 很直观地看出. 最简单紧凑的格式是迎风格式, 结合课后习题中推广的迎风格式和'迎风'的形象翻译, 可以理解成风越大(特征线越斜), 依赖区域就被吹得越远(为了满足 CFL 条件). 由于迎风格式是线性插值, 精度只有一阶, 故可用上一时间层的三点做二阶逼近, 此即为 Lax–Wendroff 格式, 为满足 CFL 条件, 需要<span class="math inline">\(\vert\nu\vert &lt; 1\)</span>, 根据推广的迎风格式推测, 可能也有推广的 迎风Lax–Wendroff 格式. 有限体积格式从积分的角度给出了新的数值逼近方法, 并引出了 TVD 的概念. 在盒式格式中, 由于其无耗散的特性, 引入了一个启发性的概念--群速度, 用于表示色散 PDE 中能量的传播速度. 蛙跳格式可分为非交错型和交错型, 在交错型中会产生伪解波型, 需要将其滤掉.</p>
 <p>下一学期可以根据新的章节完善对本书算法的整理.</p>
@@ -651,6 +660,25 @@
   <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.3.0</div>
 
         
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-user"></i>
+    </span>
+    <span class="site-uv" title="Total Visitors">
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+    </span>
+  
+    <span class="post-meta-divider">|</span>
+  
+    <span class="post-meta-item-icon">
+      <i class="fa fa-eye"></i>
+    </span>
+    <span class="site-pv" title="Total Views">
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+    </span>
+  
+</div>
 
 
 
