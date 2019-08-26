@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html style="height: 100%">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+<body style="height: 100%; margin: 0">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="container" style="height: 100%"></div>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/OpenWaygate/OpenWaygate.github.io@master/CDN/js/echarts.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/OpenWaygate/OpenWaygate.github.io@master/CDN/js/jquery.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/OpenWaygate/OpenWaygate.github.io@master/CDN/js/dataTool.js"></script>
+    <script type="text/javascript">
+    var dom = document.getElementById("container");
+    var myChart = echarts.init(dom);
+    var app = {};
+    option = null;
+    myChart.showLoading();
+    $.get('https://cdn.jsdelivr.net/gh/OpenWaygate/OpenWaygate.github.io@master/CDN/data/email_allg.gexf', function (xml) {
+        myChart.hideLoading();
+        var graph = echarts.dataTool.gexf.parse(xml);
+        var categories = [];
+        for (var i = 0; i < 23; i++) {
+            categories[i] = {
+                name: '簇' + i
+            };
+        }
+        graph.nodes.forEach(function (node) {
+            node.itemStyle = null;
+            node.value = node.symbolSize;
+            node.symbolSize /= 1.5;
+            node.label = {
+                normal: {
+                    show: node.symbolSize > 10
+                }
+            };
+            node.category = node.attributes.modularity_class;
+        });
+        option = {
+            title: {
+                text: 'email',
+                subtext: 'Circular layout',
+                top: 'bottom',
+                left: 'right'
+            },
+            tooltip: {},
+            legend: [{
+                // selectedMode: 'single',
+                data: categories.map(function (a) {
+                    return a.name;
+                })
+            }],
+            animationDurationUpdate: 1500,
+            animationEasingUpdate: 'quinticInOut',
+            series : [
+                {
+                    name: '',
+                    type: 'graph',
+                    layout: 'circular',
+                    circular: {
+                        rotateLabel: true
+                    },
+                    data: graph.nodes,
+                    links: graph.links,
+                    categories: categories,
+                    roam: true,
+                    label: {
+                        normal: {
+                            position: 'right',
+                            formatter: '{b}'
+                        }
+                    },
+                    lineStyle: {
+                        normal: {
+                            color: 'source',
+                            curveness: 0.3
+                        }
+                    }
+                }
+            ]
+        };
+        myChart.setOption(option);
+    }, 'xml');;
+    if (option && typeof option === "object") {
+        myChart.setOption(option, true);
+    }
+</script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</body>
+</html>
