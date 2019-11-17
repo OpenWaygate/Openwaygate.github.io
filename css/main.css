@@ -1760,7 +1760,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #db0560;
+  background: #ffffa4;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -2719,9 +2719,16 @@ ul.breadcrumb li+li:last-child {
     color: #eee;
   }
 }
+改变背景色和透明度,
 .main-inner {
   background: #fff;
   opacity: 0.9;
+}
+body {
+  color: #000;
+}
+.posts-expand .post-title-link {
+  color: #000;
 }
 .header-inner {
   background: rgba(255,255,255,0.91);
